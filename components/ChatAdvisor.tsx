@@ -138,7 +138,7 @@ export default function ChatAdvisor({ profile, topOpportunities }: ChatAdvisorPr
               </div>
               <div>
                 <p className="text-sm font-bold text-white">Kairos AI Advisor</p>
-                <p className="text-xs text-emerald-400">Pakistan-aware • Roman Urdu / English</p>
+                <p className="text-xs text-emerald-400">Industry Intelligence • Roman Urdu / English</p>
               </div>
             </div>
             <button onClick={() => setOpen(false)} className="text-slate-500 hover:text-white transition-colors p-1">
