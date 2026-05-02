@@ -3,6 +3,7 @@
 import type { AnalyzeResponse, StudentProfile } from "@/lib/types";
 import OpportunityCard from "./OpportunityCard";
 import CoverLetterModal from "./CoverLetterModal";
+import CareerRoadmap from "./CareerRoadmap";
 import { Trophy, Filter, TrendingUp, AlertTriangle, Clock, Star } from "lucide-react";
 import { useState } from "react";
 import type { RankedOpportunity } from "@/lib/types";
@@ -77,6 +78,7 @@ export default function ResultsPanel({ data, profile }: ResultsPanelProps) {
             <span className="font-bold text-lg">Ranked Results</span>
           </div>
           <div className="flex items-center gap-2 ml-auto flex-wrap">
+            <CareerRoadmap profile={profile} />
             <span className="bg-violet-600/20 text-violet-300 border border-violet-500/25 text-xs px-2.5 py-1 rounded-full font-medium">
               {results.length} found
             </span>
