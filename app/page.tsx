@@ -6,9 +6,10 @@ import ProfileForm from "@/components/ProfileForm";
 import EmailInput from "@/components/EmailInput";
 import ResultsPanel, { ResultsSkeleton } from "@/components/ResultsPanel";
 import Footer from "@/components/Footer";
+import ChatAdvisor from "@/components/ChatAdvisor";
 import { DEFAULT_PROFILE } from "@/lib/sampleData";
 import type { StudentProfile, AnalyzeResponse } from "@/lib/types";
-import { Sparkles, AlertCircle, RotateCcw } from "lucide-react";
+import { Sparkles, AlertCircle, RotateCcw, Zap } from "lucide-react";
 
 const STORAGE_KEY = "kairos_results";
 const PROFILE_KEY = "kairos_profile";
@@ -19,9 +20,9 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [results, setResults] = useState<AnalyzeResponse | null>(null);
+  const [demoMode, setDemoMode] = useState(false);
   const inputRef = useRef<HTMLDivElement>(null);
 
-  // Load persisted results and profile on mount
   useEffect(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
@@ -31,7 +32,6 @@ export default function Home() {
     } catch {}
   }, []);
 
-  // Persist profile changes
   useEffect(() => {
     try { localStorage.setItem(PROFILE_KEY, JSON.stringify(profile)); } catch {}
   }, [profile]);
@@ -41,27 +41,37 @@ export default function Home() {
 
   const handleAnalyze = async () => {
     const combined = emails.filter(e => e.trim()).join("\n\n---\n\n");
-    if (!combined) {
+
+    if (!demoMode && !combined) {
       setError("Please add at least one email or load sample emails.");
       scrollToInput();
       return;
     }
+
     setError(null);
     setLoading(true);
     setResults(null);
 
     try {
-      const res = await fetch("/api/analyze", {
+      const url = demoMode ? "/api/analyze?demo=true" : "/api/analyze";
+      const res = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ emails: combined, profile }),
+        body: JSON.stringify({ emails: combined || " ", profile }),
       });
+
       if (!res.ok) {
         const data = await res.json();
         throw new Error(data.error || `HTTP ${res.status}`);
       }
-      const data = await res.json();
+
+      const data: AnalyzeResponse & { isFallback?: boolean } = await res.json();
       setResults(data);
+
+      if (data.isFallback && !demoMode) {
+        setError("Live analysis timed out — showing pre-analyzed sample results.");
+      }
+
       try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch {}
     } catch (e) {
       setError(e instanceof Error ? e.message : "Something went wrong");
@@ -102,6 +112,21 @@ export default function Home() {
             <Sparkles size={20} className={loading ? "animate-spin" : "group-hover:rotate-12 transition-transform"} />
             {loading ? "Analyzing..." : "Analyze Inbox"}
           </button>
+
+          {/* Demo Mode toggle */}
+          <button
+            onClick={() => setDemoMode(d => !d)}
+            className={`flex items-center gap-2 px-4 py-4 rounded-2xl text-sm border transition-all ${
+              demoMode
+                ? "bg-amber-500/15 border-amber-500/40 text-amber-300"
+                : "border-white/10 text-slate-500 hover:text-slate-300 hover:border-white/20"
+            }`}
+            title="Demo Mode skips the API and shows instant pre-analyzed results"
+          >
+            <Zap size={14} />
+            Demo Mode {demoMode ? "ON" : "OFF"}
+          </button>
+
           {results && !loading && (
             <button
               onClick={handleClear}
@@ -117,6 +142,13 @@ export default function Home() {
       </div>
 
       <Footer />
+
+      {results && (
+        <ChatAdvisor
+          profile={profile}
+          topOpportunities={results.results}
+        />
+      )}
     </main>
   );
 }

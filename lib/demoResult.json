@@ -1,0 +1,371 @@
+{
+  "spamCount": 1,
+  "isFallback": true,
+  "processedAt": "2026-05-03T00:00:00.000Z",
+  "results": [
+    {
+      "rank": 1,
+      "daysUntilDeadline": 7,
+      "score": {
+        "fit": 75,
+        "urgency": 80,
+        "completeness": 85,
+        "prestige": 50,
+        "total": 76,
+        "evidence": [
+          "Matches your preferred type: fellowship",
+          "1 skill match(es): Python",
+          "No CGPA requirement",
+          "Location compatible",
+          "Funded opportunity matches your financial need",
+          "7 days left — act this week",
+          "Missing: required docs",
+          "Standard organization prestige"
+        ]
+      },
+      "actionChecklist": [
+        "Open application: https://fellowship.mlh.io",
+        "Mark deadline: 2026-05-10",
+        "Tailor your CV/SOP for this opportunity",
+        "Prepare a strong GitHub portfolio — MLH values open-source contributions",
+        "Join MLH Discord to connect with past fellows before applying"
+      ],
+      "opportunity": {
+        "emailIndex": 4,
+        "isOpportunity": true,
+        "title": "MLH Fellowship Spring/Summer 2026",
+        "type": "fellowship",
+        "organization": "Major League Hacking (MLH)",
+        "deadline": "2026-05-10",
+        "deadlineRaw": "10 May 2026",
+        "eligibility": "Currently enrolled student OR recent graduate (within 1 year). No CGPA minimum. Strong GitHub portfolio preferred.",
+        "minCGPA": null,
+        "requiredDocs": [],
+        "skills": ["Python", "Open Source", "GitHub"],
+        "applicationLink": "https://fellowship.mlh.io",
+        "contactEmail": "fellowship@mlh.io",
+        "fundingMentioned": true,
+        "location": "Remote",
+        "degreeRequirement": null,
+        "isStrictDegree": false,
+        "summary": "12-week fully remote fellowship with $5,000 stipend. Tracks include Open Source, Explorer, and Production Engineering. Open to Pakistani students.",
+        "rawSnippet": "MLH Fellowship applications for Spring/Summer 2026 batch are open! 12-week remote open-source fellowship..."
+      }
+    },
+    {
+      "rank": 2,
+      "daysUntilDeadline": -8,
+      "score": {
+        "fit": 85,
+        "urgency": 5,
+        "completeness": 100,
+        "prestige": 70,
+        "total": 62,
+        "evidence": [
+          "Matches your preferred type: internship",
+          "3 skill match(es): Python, React, Node.js",
+          "CGPA 3.2 meets minimum 3.0",
+          "Location compatible",
+          "Funded opportunity matches your financial need",
+          "Deadline has passed",
+          "All key fields extracted",
+          "Well-known organization: Tintash"
+        ]
+      },
+      "actionChecklist": [
+        "Contact: careers@tintash.com",
+        "Mark deadline: 2026-04-25",
+        "Send CV and GitHub profile with subject: SWE Intern Summer 2026 – [Your Name]",
+        "Tailor your CV/SOP for this opportunity",
+        "Email directly — deadline passed but reaching out shows initiative"
+      ],
+      "opportunity": {
+        "emailIndex": 2,
+        "isOpportunity": true,
+        "title": "Paid Software Engineer Intern – Tintash Summer 2026",
+        "type": "internship",
+        "organization": "Tintash",
+        "deadline": "2026-04-25",
+        "deadlineRaw": "25 April 2026",
+        "eligibility": "CS / SE / IT undergraduate (Semester 4 or above). Minimum CGPA 3.0.",
+        "minCGPA": 3.0,
+        "requiredDocs": ["CV", "GitHub profile"],
+        "skills": ["Python", "React", "Node.js"],
+        "applicationLink": null,
+        "contactEmail": "careers@tintash.com",
+        "fundingMentioned": true,
+        "location": "Lahore",
+        "degreeRequirement": "CS / SE / IT",
+        "isStrictDegree": false,
+        "summary": "Paid 3-month on-site internship at Tintash, Lahore (DHA Phase 6). Stipend PKR 45,000/month. Strong technical fit with your Python, React, and Node.js skills.",
+        "rawSnippet": "Tintash is hiring Software Engineer Interns for Summer 2026. We're a Lahore-based award-winning product studio..."
+      }
+    },
+    {
+      "rank": 3,
+      "daysUntilDeadline": -2,
+      "score": {
+        "fit": 70,
+        "urgency": 5,
+        "completeness": 100,
+        "prestige": 90,
+        "total": 57,
+        "evidence": [
+          "Matches your preferred type: scholarship",
+          "CGPA 3.2 meets minimum 3.0",
+          "Location compatible",
+          "Funded opportunity matches your financial need",
+          "Deadline has passed",
+          "All key fields extracted",
+          "Top-tier prestige: USEFP Fulbright"
+        ]
+      },
+      "actionChecklist": [
+        "Open application: https://www.usefpakistan.org/fulbright",
+        "Mark deadline: 2026-05-01",
+        "Contact: fulbright@usefpakistan.org",
+        "Prepare Statement of Purpose (500–700 words)",
+        "Request three recommendation letters from faculty",
+        "Gather transcripts from all universities attended",
+        "Tailor your CV/SOP for this opportunity",
+        "Deadline passed — bookmark for Fulbright 2027 cycle and start GRE prep now"
+      ],
+      "opportunity": {
+        "emailIndex": 1,
+        "isOpportunity": true,
+        "title": "Fulbright Scholarship 2026-27",
+        "type": "scholarship",
+        "organization": "USEFP Fulbright",
+        "deadline": "2026-05-01",
+        "deadlineRaw": "1 May 2026",
+        "eligibility": "Pakistani citizen. Minimum 16 years of education (BS/BE). Minimum CGPA 3.0. No prior US degree.",
+        "minCGPA": 3.0,
+        "requiredDocs": [
+          "Statement of Purpose (500–700 words)",
+          "Three recommendation letters",
+          "Transcripts from all universities",
+          "GRE scores (optional)",
+          "TOEFL/IELTS (if available)"
+        ],
+        "skills": [],
+        "applicationLink": "https://www.usefpakistan.org/fulbright",
+        "contactEmail": "fulbright@usefpakistan.org",
+        "fundingMentioned": true,
+        "location": "USA (Remote application from Pakistan)",
+        "degreeRequirement": "BS/BE",
+        "isStrictDegree": false,
+        "summary": "Fully funded MS/PhD in the USA. Covers tuition, living allowance, airfare, health insurance, and book allowance. Highest prestige scholarship available to Pakistani students.",
+        "rawSnippet": "The United States Educational Foundation in Pakistan (USEFP) invites applications for the Fulbright Scholarship..."
+      }
+    },
+    {
+      "rank": 4,
+      "daysUntilDeadline": -3,
+      "score": {
+        "fit": 70,
+        "urgency": 5,
+        "completeness": 100,
+        "prestige": 70,
+        "total": 55,
+        "evidence": [
+          "Matches your preferred type: scholarship",
+          "CGPA 3.2 meets minimum 2.5",
+          "Location compatible",
+          "Funded opportunity matches your financial need",
+          "Deadline has passed",
+          "All key fields extracted",
+          "Well-known organization: HEC"
+        ]
+      },
+      "actionChecklist": [
+        "Open application: https://scholarships.hec.gov.pk/need-based-2026",
+        "Mark deadline: 2026-04-30",
+        "Contact: scholarships@hec.gov.pk",
+        "Prepare CNIC copy",
+        "Obtain income certificate from NADRA / Union Council",
+        "Gather latest academic transcripts",
+        "Prepare bank statement (last 6 months)",
+        "Download undertaking form from HEC portal",
+        "Tailor your CV/SOP for this opportunity"
+      ],
+      "opportunity": {
+        "emailIndex": 0,
+        "isOpportunity": true,
+        "title": "HEC Need-Based Scholarship 2026",
+        "type": "scholarship",
+        "organization": "Higher Education Commission (HEC)",
+        "deadline": "2026-04-30",
+        "deadlineRaw": "30 April 2026",
+        "eligibility": "Pakistani national enrolled in BS/BE. Minimum CGPA 2.5. Annual family income below PKR 600,000. Semester 2–8.",
+        "minCGPA": 2.5,
+        "requiredDocs": [
+          "CNIC copy",
+          "Income certificate from NADRA / Union Council",
+          "Latest academic transcripts",
+          "Bank statement (last 6 months)",
+          "Undertaking form (from HEC portal)"
+        ],
+        "skills": [],
+        "applicationLink": "https://scholarships.hec.gov.pk/need-based-2026",
+        "contactEmail": "scholarships@hec.gov.pk",
+        "fundingMentioned": true,
+        "location": "Pakistan",
+        "degreeRequirement": "BS/BE",
+        "isStrictDegree": false,
+        "summary": "PKR 10,000/month stipend plus full tuition waiver for financially deserving Pakistani undergraduates. One of the most accessible HEC programs with a low CGPA bar.",
+        "rawSnippet": "The Higher Education Commission of Pakistan is pleased to announce the HEC Need-Based Scholarship Program 2026..."
+      }
+    },
+    {
+      "rank": 5,
+      "daysUntilDeadline": 25,
+      "score": {
+        "fit": 45,
+        "urgency": 40,
+        "completeness": 85,
+        "prestige": 70,
+        "total": 52,
+        "evidence": [
+          "1 skill match(es): Machine Learning",
+          "No CGPA requirement",
+          "Location compatible",
+          "Funded opportunity matches your financial need",
+          "25 days left — this month",
+          "Missing: required docs",
+          "Well-known organization: Google"
+        ]
+      },
+      "actionChecklist": [
+        "Open application: https://developers.google.com/community/gdsc-solution-challenge",
+        "Mark deadline: 2026-05-28",
+        "Join GDSC at gdsc.community.dev (free, increases eligibility)",
+        "Form a team of 1–4 members",
+        "Pick a UN Sustainable Development Goal to address",
+        "Tailor your CV/SOP for this opportunity"
+      ],
+      "opportunity": {
+        "emailIndex": 3,
+        "isOpportunity": true,
+        "title": "Google Solution Challenge 2026",
+        "type": "competition",
+        "organization": "Google Developer Student Clubs",
+        "deadline": "2026-05-28",
+        "deadlineRaw": "Final Submission: 28 May 2026",
+        "eligibility": "University students (undergraduate or postgraduate). Teams of 1–4. GDSC members preferred.",
+        "minCGPA": null,
+        "requiredDocs": [],
+        "skills": ["Android", "Flutter", "Firebase", "Google Cloud", "TensorFlow", "Machine Learning"],
+        "applicationLink": "https://developers.google.com/community/gdsc-solution-challenge",
+        "contactEmail": null,
+        "fundingMentioned": true,
+        "location": "Remote / Global",
+        "degreeRequirement": null,
+        "isStrictDegree": false,
+        "summary": "Global student competition using Google technologies to solve UN SDGs. Top 3 teams win $3,000 USD + trip to Google HQ. 25 days remaining to submit.",
+        "rawSnippet": "The Google Solution Challenge 2026 is open for student teams worldwide. Build solutions for the UN Sustainable Development Goals..."
+      }
+    },
+    {
+      "rank": 6,
+      "daysUntilDeadline": -13,
+      "score": {
+        "fit": 60,
+        "urgency": 5,
+        "completeness": 100,
+        "prestige": 50,
+        "total": 49,
+        "evidence": [
+          "Matches your preferred type: scholarship",
+          "CGPA 3.2 meets minimum 3.2",
+          "Funded opportunity matches your financial need",
+          "Deadline has passed",
+          "All key fields extracted",
+          "Standard organization prestige"
+        ]
+      },
+      "actionChecklist": [
+        "Open application: https://jazz.com.pk/stem-scholarship-2026",
+        "Mark deadline: 2026-04-20",
+        "Contact: scholarships@jazz.com.pk",
+        "Prepare academic transcripts",
+        "Prepare CNIC copy",
+        "Write personal statement (300 words)",
+        "Request two reference letters from faculty",
+        "Tailor your CV/SOP for this opportunity"
+      ],
+      "opportunity": {
+        "emailIndex": 7,
+        "isOpportunity": true,
+        "title": "Jazz STEM Scholarship 2026",
+        "type": "scholarship",
+        "organization": "Jazz (Veon Pakistan)",
+        "deadline": "2026-04-20",
+        "deadlineRaw": "20 April 2026",
+        "eligibility": "Pakistani national enrolled in BS CS, SE, EE, or related STEM. Semester 3–6. Minimum CGPA 3.2. Financial need preferred.",
+        "minCGPA": 3.2,
+        "requiredDocs": [
+          "Academic transcripts",
+          "CNIC copy",
+          "Personal statement (300 words)",
+          "Two reference letters from faculty"
+        ],
+        "skills": [],
+        "applicationLink": "https://jazz.com.pk/stem-scholarship-2026",
+        "contactEmail": "scholarships@jazz.com.pk",
+        "fundingMentioned": true,
+        "location": "Islamabad",
+        "degreeRequirement": "BS CS / SE / EE",
+        "isStrictDegree": false,
+        "summary": "PKR 50,000 one-time scholarship plus a 2-month paid internship at Jazz HQ, Islamabad, with mentorship from Jazz engineers.",
+        "rawSnippet": "Jazz (Veon Pakistan) is proud to announce the Jazz STEM Scholarship 2026 for outstanding STEM students..."
+      }
+    },
+    {
+      "rank": 7,
+      "daysUntilDeadline": null,
+      "score": {
+        "fit": 25,
+        "urgency": 10,
+        "completeness": 85,
+        "prestige": 70,
+        "total": 34,
+        "evidence": [
+          "2 skill match(es): Machine Learning, Python",
+          "CGPA 3.2 below required 3.5",
+          "Funded opportunity matches your financial need",
+          "No deadline found — treat as low urgency",
+          "Missing: deadline",
+          "Well-known organization: NUST"
+        ]
+      },
+      "actionChecklist": [
+        "Contact: research@seecs.nust.edu.pk",
+        "Send CV + 1-page research statement",
+        "Tailor your CV/SOP for this opportunity",
+        "Raise your CGPA to 3.5 before applying — currently below minimum",
+        "Build ML/NLP project portfolio to strengthen application"
+      ],
+      "opportunity": {
+        "emailIndex": 6,
+        "isOpportunity": true,
+        "title": "Research Assistantship – AI & NLP Lab, NUST SEECS",
+        "type": "research",
+        "organization": "NUST SEECS",
+        "deadline": null,
+        "deadlineRaw": "Rolling admissions — apply ASAP",
+        "eligibility": "Strong background in ML, NLP, Python, PyTorch or TensorFlow. Minimum CGPA 3.5. Must be enrolled at NUST.",
+        "minCGPA": 3.5,
+        "requiredDocs": ["CV", "1-page research statement"],
+        "skills": ["Machine Learning", "NLP", "Python", "PyTorch", "TensorFlow"],
+        "applicationLink": null,
+        "contactEmail": "research@seecs.nust.edu.pk",
+        "fundingMentioned": true,
+        "location": "Islamabad",
+        "degreeRequirement": "BS or MS at NUST",
+        "isStrictDegree": true,
+        "summary": "Part-time or full-time research position in AI & NLP Lab under Dr. Awais Athar. PKR 20,000/month after 3-month probation. Requires NUST enrollment — currently a blocker.",
+        "rawSnippet": "The AI & NLP Research Lab at NUST SEECS invites applications for Research Assistantship positions..."
+      }
+    }
+  ]
+}

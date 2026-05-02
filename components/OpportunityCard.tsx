@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown, ChevronUp, Clock, ExternalLink, CheckSquare, AlertTriangle, FileText } from "lucide-react";
+import { ChevronDown, ChevronUp, Clock, ExternalLink, CheckSquare, AlertTriangle, FileText, CalendarPlus } from "lucide-react";
 import type { RankedOpportunity } from "@/lib/types";
 import ScoreRing from "./ScoreRing";
 
@@ -46,6 +46,24 @@ function ScoreBar({ label, value, color }: { label: string; value: number; color
       </div>
     </div>
   );
+}
+
+function buildCalendarUrl(opp: import("@/lib/types").ExtractedOpportunity): string {
+  const title = encodeURIComponent(`Apply: ${opp.title}`);
+  const org = encodeURIComponent(opp.organization);
+  const link = opp.applicationLink ? `\nApply: ${opp.applicationLink}` : "";
+  const details = encodeURIComponent(
+    `Opportunity: ${opp.title}\nOrganization: ${opp.organization}${link}\n\nRanked by Kairos — kairos-iq.netlify.app`
+  );
+  let dates = "";
+  if (opp.deadline) {
+    const d = opp.deadline.replace(/-/g, "");
+    const end = new Date(opp.deadline);
+    end.setDate(end.getDate() + 1);
+    const endStr = end.toISOString().slice(0, 10).replace(/-/g, "");
+    dates = `${d}/${endStr}`;
+  }
+  return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${dates}&details=${details}&location=${org}`;
 }
 
 export default function OpportunityCard({ item, style, onCoverLetter }: OpportunityCardProps) {
@@ -167,6 +185,15 @@ export default function OpportunityCard({ item, style, onCoverLetter }: Opportun
                 Apply Now <ExternalLink size={13} />
               </a>
             )}
+            <a
+              href={buildCalendarUrl(opp)}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="inline-flex items-center gap-2 border border-emerald-500/30 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 text-sm font-semibold px-5 py-2.5 rounded-xl transition-all"
+            >
+              <CalendarPlus size={13} /> Add to Calendar
+            </a>
             {onCoverLetter && (
               <button onClick={(e) => { e.stopPropagation(); onCoverLetter(); }}
                 className="inline-flex items-center gap-2 border border-cyan-500/30 bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 text-sm font-semibold px-5 py-2.5 rounded-xl transition-all">

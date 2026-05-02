@@ -9,7 +9,7 @@ export default function Footer() {
           <span>—</span>
           <span>Find Your Opportune Moment</span>
         </div>
-        <span className="text-slate-600 text-xs">© 2026 Kairos. All rights reserved.</span>
+        <span className="text-slate-600 text-xs">Emails are processed transiently by AI. Nothing is stored on our servers. © 2026 Kairos.</span>
         <a
           href="https://github.com/MuhammadSubhan404x/Kairos"
           target="_blank"
