@@ -117,7 +117,7 @@ export default function ChatAdvisor({ profile, topOpportunities }: ChatAdvisorPr
       {/* Floating trigger button */}
       <button
         onClick={() => setOpen(o => !o)}
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 bg-gradient-to-r from-violet-600 to-cyan-500 hover:from-violet-500 hover:to-cyan-400 text-white font-bold px-5 py-3.5 rounded-2xl shadow-2xl shadow-violet-500/40 transition-all hover:scale-105 active:scale-95"
+        className={`fixed bottom-6 right-6 z-[100] flex items-center gap-2.5 bg-gradient-to-r from-violet-600 to-cyan-500 hover:from-violet-500 hover:to-cyan-400 text-white font-bold px-5 py-3.5 rounded-2xl shadow-2xl shadow-violet-500/40 transition-all hover:scale-105 active:scale-95 ${!open ? "animate-pulse-glow" : ""}`}
         aria-label="Open AI Career Advisor"
       >
         <Bot size={18} />
@@ -127,7 +127,7 @@ export default function ChatAdvisor({ profile, topOpportunities }: ChatAdvisorPr
 
       {/* Chat panel */}
       {open && (
-        <div className="fixed bottom-24 right-6 z-50 w-[370px] max-w-[calc(100vw-2rem)] flex flex-col rounded-2xl border border-white/10 shadow-2xl shadow-black/60 overflow-hidden"
+        <div className="fixed bottom-24 right-6 z-[150] w-[370px] max-w-[calc(100vw-2rem)] flex flex-col rounded-2xl border border-white/10 shadow-2xl shadow-black/60 overflow-hidden animate-scale-in"
           style={{ height: "520px", background: "rgba(14,19,36,0.97)", backdropFilter: "blur(16px)" }}>
 
           {/* Header */}

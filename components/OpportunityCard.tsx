@@ -53,7 +53,7 @@ function buildCalendarUrl(opp: import("@/lib/types").ExtractedOpportunity): stri
   const org = encodeURIComponent(opp.organization);
   const link = opp.applicationLink ? `\nApply: ${opp.applicationLink}` : "";
   const details = encodeURIComponent(
-    `Opportunity: ${opp.title}\nOrganization: ${opp.organization}${link}\n\nRanked by Kairos — kairos-iq.netlify.app`
+    `Opportunity: ${opp.title}\nOrganization: ${opp.organization}${link}\n\nRanked by Kairos — kairos-production-5dd9.up.railway.app`
   );
   let dates = "";
   if (opp.deadline) {
@@ -76,7 +76,7 @@ export default function OpportunityCard({ item, style, onCoverLetter }: Opportun
   return (
     <div
       style={style}
-      className={`animate-fade-slide-in glass rounded-2xl border overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-violet-500/10 bg-gradient-to-br ${rankStyle}`}
+      className={`animate-fade-slide-in card-hover glass rounded-2xl border overflow-hidden bg-gradient-to-br ${rankStyle}`}
     >
       <button onClick={() => setExpanded(e => !e)} className="w-full text-left px-5 py-4">
         <div className="flex items-center gap-4">
