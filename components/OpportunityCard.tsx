@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { toast } from "sonner";
 import { ChevronDown, ChevronUp, Clock, ExternalLink, CheckSquare, AlertTriangle, FileText, CalendarPlus } from "lucide-react";
 import type { RankedOpportunity } from "@/lib/types";
 import ScoreRing from "./ScoreRing";
@@ -189,7 +190,7 @@ export default function OpportunityCard({ item, style, onCoverLetter }: Opportun
               href={buildCalendarUrl(opp)}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e) => { e.stopPropagation(); toast.success("Opening Google Calendar", { description: `Adding deadline for ${opp.title}` }); }}
               className="inline-flex items-center gap-2 border border-emerald-500/30 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 text-sm font-semibold px-5 py-2.5 rounded-xl transition-all"
             >
               <CalendarPlus size={13} /> Add to Calendar
