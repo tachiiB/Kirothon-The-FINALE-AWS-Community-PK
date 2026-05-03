@@ -88,6 +88,11 @@ export default function Home() {
       scrollToInput();
       return;
     }
+    if (!demoMode && profile.preferredTypes.length === 0) {
+      setError("Please select at least one opportunity type (scholarship, internship, fellowship, etc.) so the scoring engine knows what to prioritize.");
+      scrollToInput();
+      return;
+    }
     setError(null);
     setIsFallback(false);
     setLoading(true);

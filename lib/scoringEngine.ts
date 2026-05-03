@@ -107,7 +107,11 @@ export function scoreOpportunities(
   opportunities: ExtractedOpportunity[],
   profile: StudentProfile
 ): RankedOpportunity[] {
-  const real = opportunities.filter(o => o.isOpportunity);
+  const real = opportunities.filter(o => {
+    if (!o.isOpportunity) return false;
+    if (profile.preferredTypes.length === 0) return true;
+    return profile.preferredTypes.includes(o.type);
+  });
 
   const ranked = real.map((opp) => {
     const fit = scoreFit(opp, profile);

@@ -10,7 +10,9 @@ export async function POST(req: NextRequest) {
     const apiKey = process.env.OPENAI_API_KEY;
     if (!apiKey) return NextResponse.json({ error: "API key not configured" }, { status: 500 });
 
-    const { role, profile } = await req.json() as { role: TargetRole; profile: StudentProfile };
+    const body = await req.json() as { role: TargetRole; profile: StudentProfile };
+    const { role } = body;
+    const profile: StudentProfile = body.profile ?? {};
     if (!role) return NextResponse.json({ error: "Role is required" }, { status: 400 });
 
     const client = new OpenAI({ apiKey });
@@ -18,10 +20,10 @@ export async function POST(req: NextRequest) {
     const prompt = `You are a career advisor specializing in Pakistan's tech industry. Generate a detailed, realistic career roadmap for a Pakistani CS student targeting the role of "${role}".
 
 Student profile:
-- Degree: ${profile.degree}, Semester ${profile.semester}
-- CGPA: ${profile.cgpa}
-- Current skills: ${profile.skills.join(", ")}
-- Location: ${profile.location}
+- Degree: ${profile.degree ?? "Not specified"}, Semester ${profile.semester ?? "N/A"}
+- CGPA: ${profile.cgpa ?? "Not specified"}
+- Current skills: ${(profile.skills ?? []).join(", ") || "Not specified"}
+- Location: ${profile.location ?? "Pakistan"}
 - Experience: ${profile.experience || "None listed"}
 
 Return ONLY valid JSON matching this exact structure:

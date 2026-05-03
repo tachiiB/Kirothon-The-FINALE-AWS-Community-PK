@@ -106,8 +106,12 @@ export default function ResultsPanel({ data, profile }: ResultsPanelProps) {
           <div className="w-16 h-16 rounded-2xl bg-violet-600/10 flex items-center justify-center mx-auto mb-4">
             <Trophy size={28} className="text-violet-400" />
           </div>
-          <p className="text-slate-300 font-semibold">No real opportunities found</p>
-          <p className="text-slate-500 text-sm mt-1">Try loading the sample emails to see the demo.</p>
+          <p className="text-slate-300 font-semibold">No matching opportunities found</p>
+          <p className="text-slate-500 text-sm mt-1">
+            {spamCount > 0
+              ? `${spamCount} email${spamCount > 1 ? "s" : ""} were filtered as spam/noise. Try adding real opportunity emails.`
+              : "None of your emails matched your selected opportunity types. Try selecting more types in your profile, or add different emails."}
+          </p>
         </div>
       ) : (
         <div className="space-y-3">
@@ -123,7 +127,7 @@ export default function ResultsPanel({ data, profile }: ResultsPanelProps) {
       )}
 
       <p className="text-center text-xs text-slate-600 pt-2">
-        Analyzed {new Date(processedAt).toLocaleTimeString()} · Results saved locally
+        {processedAt ? `Analyzed ${new Date(processedAt).toLocaleTimeString()} · ` : ""}Results saved locally
       </p>
 
       {coverLetterItem && (

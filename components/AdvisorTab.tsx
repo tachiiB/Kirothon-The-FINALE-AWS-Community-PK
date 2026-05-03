@@ -5,6 +5,47 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Send, Bot, User, Loader2, Sparkles } from "lucide-react";
 import type { StudentProfile, RankedOpportunity } from "@/lib/types";
 
+function applyInline(s: string): string {
+  return s
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/\*(.+?)\*/g, "<em>$1</em>");
+}
+
+function renderMarkdown(text: string): string {
+  const escaped = text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+
+  const lines = escaped.split("\n");
+  const out: string[] = [];
+  let inList = false;
+
+  for (const line of lines) {
+    const listMatch = line.match(/^[-•*] (.+)$/);
+    if (listMatch) {
+      if (!inList) { out.push('<ul class="my-1 space-y-0.5 pl-4 list-disc">'); inList = true; }
+      out.push(`<li>${applyInline(listMatch[1])}</li>`);
+    } else {
+      if (inList) { out.push("</ul>"); inList = false; }
+      if (/^### /.test(line)) {
+        out.push(`<p class="font-bold text-white mt-3 mb-0.5">${applyInline(line.slice(4))}</p>`);
+      } else if (/^## /.test(line)) {
+        out.push(`<p class="font-bold text-white text-base mt-4 mb-1">${applyInline(line.slice(3))}</p>`);
+      } else if (/^# /.test(line)) {
+        out.push(`<p class="font-bold text-white text-lg mt-4 mb-2">${applyInline(line.slice(2))}</p>`);
+      } else if (line.trim() === "") {
+        out.push("<br/>");
+      } else {
+        out.push(`<span>${applyInline(line)}</span><br/>`);
+      }
+    }
+  }
+  if (inList) out.push("</ul>");
+
+  return out.join("");
+}
+
 interface Message {
   role: "user" | "assistant";
   content: string;
@@ -171,9 +212,10 @@ export default function AdvisorTab({ profile, topOpportunities }: AdvisorTabProp
                 style={msg.role === "assistant" ? { background: "rgba(255,255,255,0.06)" } : {}}
               >
                 {msg.content ? (
-                  <div className="prose prose-invert prose-sm max-w-none whitespace-pre-wrap">
-                    {msg.content}
-                  </div>
+                  <div
+                    className="prose prose-invert prose-sm max-w-none"
+                    dangerouslySetInnerHTML={{ __html: renderMarkdown(msg.content) }}
+                  />
                 ) : (
                   <span className="flex items-center gap-2 text-slate-400">
                     <Loader2 size={13} className="animate-spin" /> Thinking...
