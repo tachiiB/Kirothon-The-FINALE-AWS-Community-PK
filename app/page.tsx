@@ -11,7 +11,8 @@ import TabNav, { type Tab } from "@/components/TabNav";
 import AdvisorTab from "@/components/AdvisorTab";
 import RoadmapTab from "@/components/RoadmapTab";
 import { DEFAULT_PROFILE } from "@/lib/sampleData";
-import type { StudentProfile, AnalyzeResponse } from "@/lib/types";
+import type { StudentProfile, AnalyzeResponse, RankedOpportunity } from "@/lib/types";
+import type { Message } from "@/components/AdvisorTab";
 import { Sparkles, AlertCircle, RotateCcw, Zap, AlertTriangle } from "lucide-react";
 
 const STORAGE_KEY = "kairos_results";
@@ -23,6 +24,60 @@ const tabVariants = {
   exit: { opacity: 0, y: -12 },
 };
 
+function AnalysisProgress({ loading }: { loading: boolean }) {
+  const [progress, setProgress] = useState(0);
+  const [stage, setStage] = useState("Initializing...");
+
+  useEffect(() => {
+    if (!loading) { setProgress(0); return; }
+    setProgress(0);
+    setStage("Reading your emails...");
+
+    const stages = [
+      { at: 8,  label: "Extracting opportunity details..." },
+      { at: 20, label: "Identifying deadlines & eligibility..." },
+      { at: 35, label: "Scoring against your profile..." },
+      { at: 50, label: "Ranking by fit, urgency & prestige..." },
+      { at: 65, label: "Building action checklists..." },
+      { at: 78, label: "Finalizing results..." },
+      { at: 88, label: "Almost there..." },
+    ];
+
+    let current = 0;
+    const interval = setInterval(() => {
+      current += 1;
+      setProgress(p => {
+        const next = Math.min(p + (p < 30 ? 1.8 : p < 60 ? 1.2 : p < 85 ? 0.6 : 0.2), 92);
+        return next;
+      });
+      const s = stages.find(st => st.at === current);
+      if (s) setStage(s.label);
+    }, 600);
+
+    return () => clearInterval(interval);
+  }, [loading]);
+
+  if (!loading) return null;
+
+  return (
+    <div className="glass border border-violet-500/20 rounded-2xl px-6 py-5 space-y-3">
+      <div className="flex items-center justify-between text-sm">
+        <span className="text-slate-300 font-medium">{stage}</span>
+        <span className="text-violet-400 font-bold tabular-nums">{Math.round(progress)}%</span>
+      </div>
+      <div className="h-2 bg-white/5 rounded-full overflow-hidden">
+        <motion.div
+          className="h-full rounded-full bg-gradient-to-r from-violet-600 to-cyan-500"
+          style={{ width: `${progress}%` }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          animate={{ width: `${progress}%` }}
+        />
+      </div>
+      <p className="text-xs text-slate-600">This typically takes 15–45 seconds depending on email count</p>
+    </div>
+  );
+}
+
 export default function Home() {
   const [activeTab, setActiveTab] = useState<Tab>("analyzer");
   const [emails, setEmails] = useState<string[]>([]);
@@ -32,6 +87,8 @@ export default function Home() {
   const [results, setResults] = useState<AnalyzeResponse | null>(null);
   const [demoMode, setDemoMode] = useState(false);
   const [isFallback, setIsFallback] = useState(false);
+  // Persist advisor messages across tab switches
+  const [advisorMessages, setAdvisorMessages] = useState<Message[]>([]);
   const inputRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -64,23 +121,6 @@ export default function Home() {
   const scrollToInput = () =>
     setTimeout(() => inputRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 100);
 
-  const fetchWithFallback = async (emails: string, profile: StudentProfile): Promise<AnalyzeResponse & { isFallback?: boolean }> => {
-    try {
-      const res = await fetch("/api/analyze", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ emails, profile }),
-      });
-      if (res.ok) return await res.json();
-    } catch {}
-    const fallbackRes = await fetch("/api/analyze?demo=true", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ emails: " ", profile }),
-    });
-    return { ...(await fallbackRes.json()), isFallback: true };
-  };
-
   const handleAnalyze = async () => {
     const combined = emails.filter(e => e.trim()).join("\n\n---\n\n");
     if (!demoMode && !combined) {
@@ -89,7 +129,7 @@ export default function Home() {
       return;
     }
     if (!demoMode && profile.preferredTypes.length === 0) {
-      setError("Please select at least one opportunity type (scholarship, internship, fellowship, etc.) so the scoring engine knows what to prioritize.");
+      setError("Please select at least one opportunity type so the scoring engine knows what to prioritize.");
       scrollToInput();
       return;
     }
@@ -99,6 +139,7 @@ export default function Home() {
     setResults(null);
     try {
       let data: AnalyzeResponse & { isFallback?: boolean };
+
       if (demoMode) {
         const res = await fetch("/api/analyze?demo=true", {
           method: "POST",
@@ -107,13 +148,25 @@ export default function Home() {
         });
         data = await res.json();
       } else {
-        data = await fetchWithFallback(combined, profile);
+        // Real analysis — no silent fallback
+        const res = await fetch("/api/analyze", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ emails: combined, profile }),
+        });
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(err.error || "Analysis failed. Please try again.");
+        }
+        data = await res.json();
+        // If server returned isFallback (API key issue), surface it clearly
+        if (data.isFallback) setIsFallback(true);
       }
+
       setResults(data);
-      setIsFallback(!demoMode && !!data.isFallback);
       try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch {}
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Something went wrong. Please try again.");
+      setError(e instanceof Error ? e.message : "Analysis failed. Check your connection and try again.");
     } finally {
       setLoading(false);
     }
@@ -126,15 +179,14 @@ export default function Home() {
     try { localStorage.removeItem(STORAGE_KEY); } catch {}
   };
 
+  const topOpportunities: RankedOpportunity[] = results?.results ?? [];
+
   return (
     <main className="min-h-screen">
-      {/* Hero only on analyzer tab */}
       {activeTab === "analyzer" && <Hero onGetStarted={scrollToInput} />}
 
-      {/* Sticky tab navigation */}
       <TabNav active={activeTab} onChange={setActiveTab} hasResults={!!results} />
 
-      {/* Tab content */}
       <AnimatePresence mode="wait">
         {activeTab === "analyzer" && (
           <motion.div
@@ -161,7 +213,7 @@ export default function Home() {
               {isFallback && (
                 <div className="flex items-center gap-2.5 bg-amber-500/10 border border-amber-500/25 text-amber-400 rounded-xl px-4 py-3 text-sm">
                   <AlertTriangle size={16} className="flex-shrink-0" />
-                  Live AI analysis timed out — showing pre-analyzed sample results.
+                  AI extraction timed out — showing pre-analyzed sample results. Your emails were received but analysis took too long.
                 </div>
               )}
 
@@ -183,7 +235,6 @@ export default function Home() {
                       ? "bg-amber-500/15 border-amber-500/40 text-amber-300"
                       : "border-white/10 text-slate-500 hover:text-slate-300 hover:border-white/20"
                   }`}
-                  title={loading ? "Analysis in progress..." : demoMode ? "Demo Mode ON" : "Enable Demo Mode"}
                 >
                   <Zap size={14} />
                   {demoMode ? "Demo Mode ON" : "Demo Mode"}
@@ -199,7 +250,7 @@ export default function Home() {
                 )}
               </div>
 
-              {loading && <ResultsSkeleton />}
+              <AnalysisProgress loading={loading} />
 
               <AnimatePresence>
                 {results && !loading && (
@@ -227,7 +278,9 @@ export default function Home() {
           >
             <AdvisorTab
               profile={profile}
-              topOpportunities={results?.results ?? []}
+              topOpportunities={topOpportunities}
+              messages={advisorMessages}
+              onMessagesChange={setAdvisorMessages}
             />
           </motion.div>
         )}

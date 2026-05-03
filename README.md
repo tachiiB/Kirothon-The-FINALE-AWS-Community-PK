@@ -9,7 +9,15 @@
 ![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)
 ![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4o--mini-412991?style=flat-square&logo=openai)
-![Netlify](https://img.shields.io/badge/Deployed-Netlify-00C7B7?style=flat-square&logo=netlify)
+![Railway](https://img.shields.io/badge/Deployed-Railway-0B0D0E?style=flat-square&logo=railway)
+
+---
+
+## Who It's For
+
+Kairos is specifically designed for university students currently enrolled in a **bachelor's program in a technical field** — Computer Science, Software Engineering, Artificial Intelligence, Data Science, Electrical Engineering, Electronics, Telecom, Mechatronics, and related disciplines.
+
+It is not designed for postgraduate students, non-technical fields, or general email management.
 
 ---
 
@@ -17,7 +25,7 @@
 
 Every week, Pakistani students receive dozens of forwarded emails — HEC scholarships, Google fellowships, local internships, research positions. Most get buried between promotional emails and university newsletters. Deadlines pass. The moments are lost.
 
-A CGPA 3.2 student in Lahore should not miss the MLH Fellowship because it was sandwiched between a Udemy flash sale and a course announcement.
+A CGPA 3.2 CS student in Lahore should not miss the MLH Fellowship because it was sandwiched between a Udemy flash sale and a course announcement.
 
 **Kairos solves this.**
 
@@ -46,7 +54,7 @@ flowchart TD
     B --> C[/api/analyze]
     C --> D{Input valid?}
     D -- No --> E[400 error]
-    D -- Yes --> F[lib/gemini.ts\nGPT-4o-mini extraction]
+    D -- Yes --> F[lib/extractor.ts\nGPT-4o-mini extraction]
     F --> G{JSON valid?}
     G -- No --> H[3-attempt repair chain\nstrip fences → retry → strict prompt]
     H --> I[lib/scoringEngine.ts\nDeterministic 4-factor scoring]
@@ -94,7 +102,7 @@ No LLM guesswork. Same inputs always produce the same output. Every score comes 
 | **Gmail Integration** | Connect inbox via Google OAuth — Primary inbox, last 20 emails |
 | **PDF Upload** | Drag-and-drop PDF parsing for forwarded email batches |
 | **Demo Mode** | Instant pre-analyzed results for demos — no API call, no timeout risk |
-| **Auto Fallback** | If live analysis times out, automatically serves precomputed results |
+| **Error Transparency** | If live analysis fails, a clear error is shown — no silent fallback to demo data |
 | **Evidence Chips** | Every score factor is explained in plain English |
 | **Urgency Alerts** | Red banner for deadlines within 3 days, amber for within 7 |
 | **Action Checklists** | Auto-generated per opportunity: docs to prepare, links to open, deadlines to mark |
@@ -114,7 +122,7 @@ No LLM guesswork. Same inputs always produce the same output. Every score comes 
 | Auth | NextAuth.js v4 + Google OAuth | Gmail read access with token refresh |
 | Scoring | Custom deterministic TypeScript engine | Reproducible results, no AI variance |
 | Styling | Tailwind CSS + glass morphism | No component library dependency |
-| Deployment | Netlify + `@netlify/plugin-nextjs` | Auto deploy on push |
+| Deployment | Railway | Auto deploy on push to main |
 
 ---
 

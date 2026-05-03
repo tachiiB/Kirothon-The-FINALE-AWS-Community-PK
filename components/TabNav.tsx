@@ -11,17 +11,17 @@ interface TabNavProps {
   hasResults: boolean;
 }
 
-const TABS: { id: Tab; label: string; icon: React.ElementType; badge?: string }[] = [
-  { id: "analyzer", label: "Analyzer",   icon: Sparkles },
-  { id: "advisor",  label: "AI Advisor", icon: MessageSquare },
-  { id: "roadmap",  label: "Roadmap",    icon: Map },
+const TABS: { id: Tab; label: string; icon: React.ElementType; desc: string }[] = [
+  { id: "analyzer", label: "AI Analyzer",  icon: Sparkles,      desc: "Rank your opportunities" },
+  { id: "advisor",  label: "AI Advisor",   icon: MessageSquare, desc: "Chat in English or Roman Urdu" },
+  { id: "roadmap",  label: "Career Roadmap", icon: Map,         desc: "Phase-by-phase plan" },
 ];
 
 export default function TabNav({ active, onChange, hasResults }: TabNavProps) {
   return (
-    <div className="sticky top-0 z-40 w-full border-b border-white/8 bg-[#0A0F1E]/80 backdrop-blur-xl">
+    <div className="sticky top-0 z-40 w-full border-b border-white/8 bg-[#0A0F1E]/90 backdrop-blur-xl">
       <div className="max-w-5xl mx-auto px-4">
-        <div className="flex items-center gap-1">
+        <div className="flex items-stretch gap-0">
           {TABS.map((tab) => {
             const Icon = tab.icon;
             const isActive = active === tab.id;
@@ -29,17 +29,19 @@ export default function TabNav({ active, onChange, hasResults }: TabNavProps) {
               <button
                 key={tab.id}
                 onClick={() => onChange(tab.id)}
-                className={`relative flex items-center gap-2 px-5 py-4 text-sm font-medium transition-colors duration-200 ${
-                  isActive ? "text-white" : "text-slate-500 hover:text-slate-300"
+                className={`relative flex flex-col items-center justify-center gap-0.5 px-6 py-4 flex-1 sm:flex-none sm:px-8 transition-all duration-200 ${
+                  isActive
+                    ? "text-white"
+                    : "text-slate-500 hover:text-slate-300 hover:bg-white/3"
                 }`}
               >
-                <Icon size={15} />
-                {tab.label}
-                {tab.badge && (
-                  <span className="text-[10px] bg-violet-500/20 text-violet-300 border border-violet-500/30 px-1.5 py-0.5 rounded-full">
-                    {tab.badge}
-                  </span>
-                )}
+                <div className={`flex items-center gap-2 font-bold text-base sm:text-lg transition-all ${isActive ? "text-white" : "text-slate-500"}`}>
+                  <Icon size={18} className={isActive ? "text-violet-400" : "text-slate-600"} />
+                  {tab.label}
+                </div>
+                <span className={`text-xs hidden sm:block transition-all ${isActive ? "text-slate-400" : "text-slate-700"}`}>
+                  {tab.desc}
+                </span>
                 {isActive && (
                   <motion.div
                     layoutId="tab-indicator"

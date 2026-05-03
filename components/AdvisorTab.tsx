@@ -46,7 +46,7 @@ function renderMarkdown(text: string): string {
   return out.join("");
 }
 
-interface Message {
+export interface Message {
   role: "user" | "assistant";
   content: string;
 }
@@ -54,6 +54,8 @@ interface Message {
 interface AdvisorTabProps {
   profile: StudentProfile;
   topOpportunities: RankedOpportunity[];
+  messages: Message[];
+  onMessagesChange: (msgs: Message[]) => void;
 }
 
 const QUICK_PROMPTS = [
@@ -65,8 +67,10 @@ const QUICK_PROMPTS = [
   { label: "🚀 6-month career roadmap",       text: "Give me a realistic 6-month plan to land my first tech job in Pakistan." },
 ];
 
-export default function AdvisorTab({ profile, topOpportunities }: AdvisorTabProps) {
-  const [messages, setMessages] = useState<Message[]>([]);
+export default function AdvisorTab({ profile, topOpportunities, messages, onMessagesChange }: AdvisorTabProps) {
+  const setMessages = (updater: Message[] | ((prev: Message[]) => Message[])) => {
+    onMessagesChange(typeof updater === "function" ? updater(messages) : updater);
+  };
   const [input, setInput] = useState("");
   const [streaming, setStreaming] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);

@@ -81,7 +81,7 @@ export default function ProfileForm({ profile, onChange }: ProfileFormProps) {
   const commitCgpa = (raw: string) => {
     const v = parseFloat(raw);
     const clamped = isNaN(v) || v < 0 ? 0 : v > 4 ? 4 : Math.round(v * 100) / 100;
-    setCgpaRaw(String(clamped));
+    setCgpaRaw(clamped.toFixed(2));
     set("cgpa", clamped);
   };
 
@@ -152,7 +152,12 @@ export default function ProfileForm({ profile, onChange }: ProfileFormProps) {
                 inputMode="decimal"
                 value={cgpaRaw}
                 onChange={e => {
-                  const val = e.target.value.replace(/[^0-9.]/g, "");
+                  let val = e.target.value.replace(/[^0-9.]/g, "");
+                  // allow only one decimal point
+                  const parts = val.split(".");
+                  if (parts.length > 2) val = parts[0] + "." + parts.slice(1).join("");
+                  // max 4 chars: X.XX
+                  if (val.length > 4) val = val.slice(0, 4);
                   setCgpaRaw(val);
                 }}
                 onBlur={e => commitCgpa(e.target.value)}
