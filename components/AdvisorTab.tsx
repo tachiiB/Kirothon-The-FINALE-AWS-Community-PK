@@ -102,7 +102,7 @@ export default function AdvisorTab({ profile, topOpportunities }: AdvisorTabProp
   };
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-8 flex flex-col" style={{ height: "calc(100vh - 120px)" }}>
+    <div className="max-w-3xl mx-auto px-4 py-8 flex flex-col" style={{ minHeight: "calc(100vh - 120px)" }}>
       {/* Header */}
       <div className="flex items-center gap-4 mb-6">
         <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-violet-600 to-cyan-500 flex items-center justify-center shadow-lg shadow-violet-500/30">
@@ -119,7 +119,7 @@ export default function AdvisorTab({ profile, topOpportunities }: AdvisorTabProp
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto space-y-4 pr-1 mb-4">
+      <div className="flex-1 space-y-4 mb-4">
         {messages.length === 0 && (
           <motion.div
             initial={{ opacity: 0, y: 16 }}
