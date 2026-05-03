@@ -218,5 +218,5 @@ export const DEFAULT_PROFILE = {
   preferredTypes: ["internship", "fellowship", "scholarship"] as OpportunityType[],
   financialNeed: true,
   location: "Lahore",
-  experience: "1 year freelance web development, GDSC member",
+  experience: "1 year freelancing web development, GDG member",
 };

@@ -11,7 +11,7 @@ interface ProfileFormProps {
 }
 
 const DEGREES = [
-  // CS / IT
+  // Computer Science & Software
   "BS Computer Science",
   "BS Software Engineering",
   "BS Artificial Intelligence",
@@ -20,59 +20,27 @@ const DEGREES = [
   "BS Cyber Security",
   "BS Computer Engineering",
   "BS Information Systems",
-  // Engineering
+  "BS Game Development",
+  "BS Cloud Computing",
+  "BS Network Engineering",
+  // Electrical & Electronic
   "BS Electrical Engineering",
   "BS Electronic Engineering",
+  "BS Telecom Engineering",
+  "BS Mechatronics Engineering",
+  // Other Engineering
   "BS Mechanical Engineering",
   "BS Civil Engineering",
   "BS Chemical Engineering",
   "BS Biomedical Engineering",
-  "BS Bioinformatics",
-  "BS Telecom Engineering",
   "BS Industrial Engineering",
   "BS Petroleum Engineering",
-  "BS Textile Engineering",
-  "BS Agricultural Engineering",
-  // Sciences
+  // Quantitative Sciences
   "BS Mathematics",
-  "BS Physics",
+  "BS Applied Mathematics",
   "BS Statistics",
-  "BS Chemistry",
-  "BS Biology",
-  "BS Biochemistry",
-  "BS Environmental Science",
-  // Business
-  "BS Business Administration (BBA)",
-  "BBA Finance",
-  "BS Accounting & Finance",
-  "BS Economics",
-  "BS Commerce",
-  "BS Supply Chain Management",
-  "BS Marketing",
-  // Medical & Health
-  "MBBS",
-  "BDS",
-  "BS Pharmacy",
-  "BS Public Health",
-  "BS Nursing",
-  "BS Physiotherapy",
-  // Social Sciences & Humanities
-  "BS Psychology",
-  "BS Mass Communication",
-  "BS English Literature",
-  "BS Linguistics",
-  "BS International Relations",
-  "BS Political Science",
-  "BS Sociology",
-  "BS Education",
-  // Design & Arts
-  "BS Architecture",
-  "BS Interior Design",
-  "BS Graphic Design",
-  "BFA Fine Arts",
-  // Law
-  "LLB",
-  "BS Law",
+  "BS Physics",
+  "BS Bioinformatics",
 ];
 
 const OPP_TYPES: OpportunityType[] = ["scholarship", "internship", "fellowship", "competition", "research", "admission"];
@@ -83,9 +51,10 @@ const labelCls = "text-xs font-medium text-slate-400 mb-1.5 block";
 export default function ProfileForm({ profile, onChange }: ProfileFormProps) {
   const [open, setOpen] = useState(true);
 
-  // Local raw strings to avoid fighting controlled-input quirks
+  // Local raw strings to avoid controlled-input clamping quirks
   const [semesterRaw, setSemesterRaw] = useState(String(profile.semester));
   const [skillsRaw, setSkillsRaw] = useState(profile.skills.join(", "));
+  const [cgpaRaw, setCgpaRaw] = useState(String(profile.cgpa));
 
   // Keep local skills string in sync when parent resets (e.g. CV upload)
   const skillsKey = profile.skills.join(",");
@@ -104,9 +73,16 @@ export default function ProfileForm({ profile, onChange }: ProfileFormProps) {
 
   const commitSemester = (raw: string) => {
     const n = parseInt(raw);
-    const clamped = isNaN(n) ? 1 : Math.min(8, Math.max(1, n));
+    const clamped = isNaN(n) || n < 1 ? 1 : n > 8 ? 8 : n;
     setSemesterRaw(String(clamped));
     set("semester", clamped);
+  };
+
+  const commitCgpa = (raw: string) => {
+    const v = parseFloat(raw);
+    const clamped = isNaN(v) || v < 0 ? 0 : v > 4 ? 4 : Math.round(v * 100) / 100;
+    setCgpaRaw(String(clamped));
+    set("cgpa", clamped);
   };
 
   const commitSkills = (raw: string) => {
@@ -155,28 +131,32 @@ export default function ProfileForm({ profile, onChange }: ProfileFormProps) {
               <label className={labelCls}>Semester (1–8)</label>
               <input
                 className={inputCls}
-                type="number"
-                min={1}
-                max={8}
+                type="text"
+                inputMode="numeric"
+                maxLength={1}
                 value={semesterRaw}
-                onChange={e => setSemesterRaw(e.target.value)}
+                onChange={e => {
+                  const val = e.target.value.replace(/[^1-8]/g, "").slice(0, 1);
+                  setSemesterRaw(val);
+                  if (val) set("semester", parseInt(val));
+                }}
                 onBlur={e => commitSemester(e.target.value)}
+                placeholder="e.g. 6"
               />
             </div>
             <div>
-              <label className={labelCls}>CGPA (0–4)</label>
+              <label className={labelCls}>CGPA (0.00–4.00)</label>
               <input
                 className={inputCls}
-                type="number"
-                step="0.01"
-                min={0}
-                max={4}
-                value={profile.cgpa}
+                type="text"
+                inputMode="decimal"
+                value={cgpaRaw}
                 onChange={e => {
-                  const v = parseFloat(e.target.value);
-                  if (!isNaN(v)) set("cgpa", Math.min(4, Math.max(0, v)));
+                  const val = e.target.value.replace(/[^0-9.]/g, "");
+                  setCgpaRaw(val);
                 }}
-                placeholder="3.2"
+                onBlur={e => commitCgpa(e.target.value)}
+                placeholder="e.g. 3.20"
               />
             </div>
           </div>
@@ -208,7 +188,7 @@ export default function ProfileForm({ profile, onChange }: ProfileFormProps) {
             </div>
             <div>
               <label className={labelCls}>Experience</label>
-              <input className={inputCls} value={profile.experience} onChange={e => set("experience", e.target.value)} placeholder="e.g. GDG member, freelancer" />
+              <input className={inputCls} value={profile.experience} onChange={e => set("experience", e.target.value)} placeholder="e.g. GDG member, freelancing" />
             </div>
           </div>
 
