@@ -130,7 +130,7 @@ This document serves as proof that the Kairos project was built using Kiro AI De
 
 ### Public References
 
-- **GitHub Repository:** [github.com/tachiiB/Kirothon-The-FINALE-AWS-Comm-PK](https://github.com/tachiiB/Kirothon-The-FINALE-AWS-Comm-PK)
+- **GitHub Repository:** [github.com/tachiiB/Kirothon-The-FINALE-AWS-Community-PK](https://github.com/tachiiB/Kirothon-The-FINALE-AWS-Community-PK)
 - **Live Deployment:** [kairos-production-5dd9.up.railway.app](https://kairos-production-5dd9.up.railway.app)
 - **README Badge:** ![Kiro](https://img.shields.io/badge/Built%20with-Kiro%20AI-blueviolet?style=flat-square)
 
@@ -174,7 +174,7 @@ For verification of Kiro usage or questions about the development process:
 - **Developer:** Taha Jamshed
 - **GitHub:** [@tachiiB](https://github.com/tachiiB)
 - **Institution:** University of Engineering and Technology, Lahore
-- **Project Repository:** [github.com/tachiiB/Kirothon-The-FINALE-AWS-Comm-PK](https://github.com/tachiiB/Kirothon-The-FINALE-AWS-Comm-PK)
+- **Project Repository:** [github.com/tachiiB/Kirothon-The-FINALE-AWS-Community-PK](https://github.com/tachiiB/Kirothon-The-FINALE-AWS-Community-PK)
 
 ## License & Attribution Requirements
 

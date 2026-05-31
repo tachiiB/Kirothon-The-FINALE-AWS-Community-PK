@@ -114,7 +114,7 @@ export default function ProfileForm({ profile, onChange }: ProfileFormProps) {
                 className={inputCls}
                 value={profile.name}
                 onChange={e => set("name", e.target.value)}
-                placeholder="Muhammad Subhan"
+                placeholder="Taha Jamshed"
               />
             </div>
             <div>

@@ -1,13 +1,13 @@
 # Pre-Push Checklist ✅
 
-Before pushing to `https://github.com/tachiiB/Kirothon-The-FINALE-AWS-Comm-PK`, verify:
+Before pushing to `https://github.com/tachiiB/Kirothon-The-FINALE-AWS-Community-PK`, verify:
 
 ## Documentation ✅
 
 - [x] **README.md** - Updated with Kiro branding and Taha Jamshed as developer
 - [x] **DEVLOG.md** - Comprehensive development log showing Kiro usage
 - [x] **KIRO_ATTRIBUTION.md** - Official attribution document
-- [x] All repository links point to: `github.com/tachiiB/Kirothon-The-FINALE-AWS-Comm-PK`
+- [x] All repository links point to: `github.com/tachiiB/Kirothon-The-FINALE-AWS-Community-PK`
 - [x] All developer references: **Taha Jamshed** (@tachiiB)
 - [x] No traces of "migration" language
 - [x] No references to other IDEs or development tools
@@ -16,7 +16,7 @@ Before pushing to `https://github.com/tachiiB/Kirothon-The-FINALE-AWS-Comm-PK`, 
 
 All links updated to new repository:
 - README.md header: ✅
-- README.md clone command: ✅ `git clone https://github.com/tachiiB/Kirothon-The-FINALE-AWS-Comm-PK.git`
+- README.md clone command: ✅ `git clone https://github.com/tachiiB/Kirothon-The-FINALE-AWS-Community-PK.git`
 - DEVLOG.md footer: ✅
 - KIRO_ATTRIBUTION.md: ✅
 
@@ -51,7 +51,7 @@ git init
 git add .
 git commit -m "Initial commit: Kairos - Built with Kiro AI Development Environment"
 git branch -M main
-git remote add origin https://github.com/tachiiB/Kirothon-The-FINALE-AWS-Comm-PK.git
+git remote add origin https://github.com/tachiiB/Kirothon-The-FINALE-AWS-Community-PK.git
 git push -u origin main
 ```
 

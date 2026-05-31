@@ -11,13 +11,13 @@ export default function Footer() {
         </div>
         <span className="text-slate-600 text-xs">Emails are processed transiently by AI. Nothing is stored on our servers. © 2026 Kairos.</span>
         <a
-          href="https://github.com/MuhammadSubhan404x/Kairos"
+          href="https://github.com/tachiiB/Kirothon-The-FINALE-AWS-Community-PK"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 text-slate-500 hover:text-white transition-colors group"
         >
           <Github size={15} className="group-hover:text-white" />
-          <span>github.com/MuhammadSubhan404x/Kairos</span>
+          <span>github.com/tachiiB/Kirothon-The-FINALE-AWS-Community-PK</span>
         </a>
       </div>
     </footer>

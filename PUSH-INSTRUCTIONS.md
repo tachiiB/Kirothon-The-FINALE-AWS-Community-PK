@@ -50,7 +50,7 @@ git branch -M main
 
 ### Step 6: Connect to GitHub repository
 ```bash
-git remote add origin https://github.com/tachiiB/Kirothon-The-FINALE-AWS-Comm-PK.git
+git remote add origin https://github.com/tachiiB/Kirothon-The-FINALE-AWS-Community-PK.git
 ```
 **What this does:** Links your local project to your GitHub repository
 
@@ -103,7 +103,7 @@ git branch -M main
 
 ### Step 6: Connect to GitHub repository
 ```bash
-git remote add origin https://github.com/tachiiB/Kirothon-The-FINALE-AWS-Comm-PK.git
+git remote add origin https://github.com/tachiiB/Kirothon-The-FINALE-AWS-Community-PK.git
 ```
 
 ### Step 7: Push to GitHub
@@ -133,7 +133,7 @@ git push -u origin main
 
 ## Verification After Push ✅
 
-After pushing, visit: https://github.com/tachiiB/Kirothon-The-FINALE-AWS-Comm-PK
+After pushing, visit: https://github.com/tachiiB/Kirothon-The-FINALE-AWS-Community-PK
 
 You should see:
 - ✅ Your custom README.md with Kiro badge
@@ -151,7 +151,7 @@ git init
 git add .
 git commit -m "Initial commit: Kairos - Built with Kiro AI Development Environment"
 git branch -M main
-git remote add origin https://github.com/tachiiB/Kirothon-The-FINALE-AWS-Comm-PK.git
+git remote add origin https://github.com/tachiiB/Kirothon-The-FINALE-AWS-Community-PK.git
 git pull origin main --allow-unrelated-histories
 git push -u origin main --force
 ```
@@ -164,7 +164,7 @@ git init
 git add .
 git commit -m "Initial commit: Kairos - Built with Kiro AI Development Environment"
 git branch -M main
-git remote add origin https://github.com/tachiiB/Kirothon-The-FINALE-AWS-Comm-PK.git
+git remote add origin https://github.com/tachiiB/Kirothon-The-FINALE-AWS-Community-PK.git
 git push -u origin main
 ```
 

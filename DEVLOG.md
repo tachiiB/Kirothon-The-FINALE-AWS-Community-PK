@@ -674,7 +674,7 @@ The combination of deterministic scoring (no AI variance), transparent evidence 
 **Built with Kiro AI Development Environment**  
 **Developer:** Taha Jamshed | UET Lahore  
 **Contact:** [GitHub](https://github.com/tachiiB)  
-**Repository:** [github.com/tachiiB/Kirothon-The-FINALE-AWS-Comm-PK](https://github.com/tachiiB/Kirothon-The-FINALE-AWS-Comm-PK)  
+**Repository:** [github.com/tachiiB/Kirothon-The-FINALE-AWS-Community-PK](https://github.com/tachiiB/Kirothon-The-FINALE-AWS-Community-PK)  
 **Live Demo:** [kairos-production-5dd9.up.railway.app](https://kairos-production-5dd9.up.railway.app)
 
 ---
