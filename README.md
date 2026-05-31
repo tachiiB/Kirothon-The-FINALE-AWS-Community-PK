@@ -61,26 +61,33 @@ Paste your inbox. Fill your profile. Kairos does the rest.
 
 ```mermaid
 flowchart TD
-    A[User Input - Emails / Gmail / PDF] --> B[Next.js App Router]
-    B --> C[/api/analyze]
-    C --> D{Input valid?}
-    D -- No --> E[400 error]
-    D -- Yes --> F[lib/extractor.ts - GPT-4o-mini extraction]
-    F --> G{JSON valid?}
-    G -- No --> H[3-attempt repair chain - strip fences, retry, strict prompt]
-    H --> I[lib/scoringEngine.ts - Deterministic 4-factor scoring]
-    G -- Yes --> I
-    I --> J[Ranked RankedOpportunity array]
-    J --> K[ResultsPanel - OpportunityCard]
-    K --> L[Add to Calendar - Google Calendar deeplink]
-    K --> M[Cover Letter - /api/cover-letter with GPT-4o-mini]
-    K --> N[Career Roadmap - /api/roadmap with GPT-4o-mini]
-    B --> O[/api/chat - Edge Runtime SSE]
-    O --> P[Bilingual AI Advisor - Roman Urdu / English streaming]
-    C --> Q{API timeout?}
-    Q -- Yes --> R[lib/demoResult.json - Instant precomputed fallback]
-```
+    A["User Input - Emails / Gmail / PDF"] --> B["Next.js App Router"]
+    B --> C["/api/analyze"]
+    C --> D{"Input valid?"}
 
+    D -->|No| E["400 error"]
+    D -->|Yes| F["lib/extractor.ts - GPT-4o-mini extraction"]
+
+    F --> G{"JSON valid?"}
+
+    G -->|No| H["3-attempt repair chain - strip fences, retry, strict prompt"]
+    G -->|Yes| I["lib/scoringEngine.ts - Deterministic 4-factor scoring"]
+
+    H --> I
+
+    I --> J["Ranked Opportunity Array"]
+    J --> K["ResultsPanel - OpportunityCard"]
+
+    K --> L["Add to Calendar - Google Calendar deeplink"]
+    K --> M["Cover Letter - /api/cover-letter with GPT-4o-mini"]
+    K --> N["Career Roadmap - /api/roadmap with GPT-4o-mini"]
+
+    B --> O["/api/chat - Edge Runtime SSE"]
+    O --> P["Bilingual AI Advisor - Roman Urdu / English streaming"]
+
+    C --> Q{"API timeout?"}
+    Q -->|Yes| R["lib/demoResult.json - Instant precomputed fallback"]
+```
 ---
 
 ## Scoring Formula
