@@ -14,6 +14,16 @@
 
 ---
 
+## 🎯 Quick Start for Judges
+
+**Want to test immediately?** Visit the live demo: [kairos-production-5dd9.up.railway.app](https://kairos-production-5dd9.up.railway.app)
+
+**Want to run locally?** Jump to [Setup Instructions](#-setup-instructions-for-judges)
+
+**Built with:** Kiro AI Development Environment | Next.js 14 | TypeScript | OpenAI GPT-4o-mini
+
+---
+
 ## Who It's For
 
 Kairos is specifically designed for university students currently enrolled in a **bachelor's program in a technical field** — Computer Science, Software Engineering, Artificial Intelligence, Data Science, Electrical Engineering, Electronics, Telecom, Mechatronics, and related disciplines.
@@ -139,7 +149,74 @@ Kairos is built to never show a broken state during a live demo:
 
 ---
 
-## Run Locally
+## 🚀 Setup Instructions (For Judges)
+
+### Prerequisites
+- Node.js 18+ installed
+- OpenAI API key (required)
+- Git installed
+
+### Quick Start (5 minutes)
+
+**Step 1: Clone the repository**
+```bash
+git clone https://github.com/tachiiB/Kirothon-The-FINALE-AWS-Community-PK.git
+cd Kirothon-The-FINALE-AWS-Community-PK
+```
+
+**Step 2: Install dependencies**
+```bash
+npm install
+```
+
+**Step 3: Set up environment variables**
+
+Create a `.env.local` file in the root directory:
+
+```env
+# Required - Get from https://platform.openai.com/api-keys
+OPENAI_API_KEY=sk-your-openai-api-key-here
+
+# Optional - Only needed for Gmail integration
+GOOGLE_CLIENT_ID=your-google-client-id
+GOOGLE_CLIENT_SECRET=your-google-client-secret
+NEXTAUTH_SECRET=any-random-32-character-string
+NEXTAUTH_URL=http://localhost:3000
+```
+
+**Step 4: Run the development server**
+```bash
+npm run dev
+```
+
+**Step 5: Open in browser**
+
+Navigate to [http://localhost:3000](http://localhost:3000)
+
+### Testing the Application
+
+**Option 1: Use Demo Mode (No API key needed)**
+1. Click the **"Load Samples"** button
+2. Click **"Analyze Inbox"**
+3. See pre-analyzed results instantly
+
+**Option 2: Test with Real Data (Requires OpenAI API key)**
+1. Paste email text in the input area
+2. Fill in your student profile
+3. Click **"Analyze Inbox"**
+4. View AI-powered analysis and rankings
+
+### Features to Test
+- ✅ Email extraction and analysis
+- ✅ Opportunity scoring and ranking
+- ✅ Cover letter generation
+- ✅ Career roadmap generator
+- ✅ Bilingual AI advisor (English/Roman Urdu)
+- ✅ Google Calendar integration
+
+---
+
+## Run Locally (Detailed)
 
 ```bash
 git clone https://github.com/tachiiB/Kirothon-The-FINALE-AWS-Community-PK.git
