@@ -4,7 +4,7 @@
 
 **Kairos finds yours.**
 
-🌐 **Live:** [kairos-production-5dd9.up.railway.app](https://kairos-production-5dd9.up.railway.app) &nbsp;|&nbsp; 💻 **Repo:** [github.com/tachiiB/Kirothon-The-FINALE-AWS-Comm-PK](https://github.com/tachiiB/Kirothon-The-FINALE-AWS-Comm-PK)
+🌐 **Live:** [kairos-production-5dd9.up.railway.app](https://kairos-production-5dd9.up.railway.app) &nbsp;|&nbsp; 💻 **Repo:** [github.com/tachiiB/Kirothon-The-FINALE-AWS-Community-PK](https://github.com/tachiiB/Kirothon-The-FINALE-AWS-Community-PK)
 
 ![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)
@@ -51,24 +51,24 @@ Paste your inbox. Fill your profile. Kairos does the rest.
 
 ```mermaid
 flowchart TD
-    A[User Input\nEmails / Gmail / PDF] --> B[Next.js App Router]
+    A[User Input - Emails / Gmail / PDF] --> B[Next.js App Router]
     B --> C[/api/analyze]
     C --> D{Input valid?}
     D -- No --> E[400 error]
-    D -- Yes --> F[lib/extractor.ts\nGPT-4o-mini extraction]
+    D -- Yes --> F[lib/extractor.ts - GPT-4o-mini extraction]
     F --> G{JSON valid?}
-    G -- No --> H[3-attempt repair chain\nstrip fences → retry → strict prompt]
-    H --> I[lib/scoringEngine.ts\nDeterministic 4-factor scoring]
+    G -- No --> H[3-attempt repair chain - strip fences, retry, strict prompt]
+    H --> I[lib/scoringEngine.ts - Deterministic 4-factor scoring]
     G -- Yes --> I
-    I --> J[Ranked RankedOpportunity[]]
-    J --> K[ResultsPanel\nOpportunityCard]
-    K --> L[Add to Calendar\nGoogle Calendar deeplink]
-    K --> M[Cover Letter\n/api/cover-letter → GPT-4o-mini]
-    K --> N[Career Roadmap\n/api/roadmap → GPT-4o-mini]
-    B --> O[/api/chat\nEdge Runtime SSE]
-    O --> P[Bilingual AI Advisor\nRoman Urdu / English streaming]
+    I --> J[Ranked RankedOpportunity array]
+    J --> K[ResultsPanel - OpportunityCard]
+    K --> L[Add to Calendar - Google Calendar deeplink]
+    K --> M[Cover Letter - /api/cover-letter with GPT-4o-mini]
+    K --> N[Career Roadmap - /api/roadmap with GPT-4o-mini]
+    B --> O[/api/chat - Edge Runtime SSE]
+    O --> P[Bilingual AI Advisor - Roman Urdu / English streaming]
     C --> Q{API timeout?}
-    Q -- Yes --> R[lib/demoResult.json\nInstant precomputed fallback]
+    Q -- Yes --> R[lib/demoResult.json - Instant precomputed fallback]
 ```
 
 ---
@@ -142,8 +142,8 @@ Kairos is built to never show a broken state during a live demo:
 ## Run Locally
 
 ```bash
-git clone https://github.com/tachiiB/Kirothon-The-FINALE-AWS-Comm-PK.git
-cd Kirothon-The-FINALE-AWS-Comm-PK
+git clone https://github.com/tachiiB/Kirothon-The-FINALE-AWS-Community-PK.git
+cd Kirothon-The-FINALE-AWS-Community-PK
 npm install
 
 # Required
