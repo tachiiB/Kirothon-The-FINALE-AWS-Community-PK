@@ -4,12 +4,13 @@
 
 **Kairos finds yours.**
 
-🌐 **Live:** [kairos-production-5dd9.up.railway.app](https://kairos-production-5dd9.up.railway.app) &nbsp;|&nbsp; 💻 **Repo:** [github.com/MuhammadSubhan404x/Kairos](https://github.com/MuhammadSubhan404x/Kairos)
+🌐 **Live:** [kairos-production-5dd9.up.railway.app](https://kairos-production-5dd9.up.railway.app) &nbsp;|&nbsp; 💻 **Repo:** [github.com/tachiiB/Kirothon-The-FINALE-AWS-Comm-PK](https://github.com/tachiiB/Kirothon-The-FINALE-AWS-Comm-PK)
 
 ![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)
 ![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4o--mini-412991?style=flat-square&logo=openai)
 ![Railway](https://img.shields.io/badge/Deployed-Railway-0B0D0E?style=flat-square&logo=railway)
+![Kiro](https://img.shields.io/badge/Built%20with-Kiro%20AI-blueviolet?style=flat-square)
 
 ---
 
@@ -115,6 +116,7 @@ No LLM guesswork. Same inputs always produce the same output. Every score comes 
 
 | Layer | Technology | Reason |
 |-------|-----------|--------|
+| **Development Environment** | **Kiro AI** | AI-assisted development, intelligent code generation, 3x faster development |
 | Framework | Next.js 14 App Router | SSR, API routes, edge runtime in one package |
 | Language | TypeScript (97.9% of codebase) | Type safety across scoring engine and API contracts |
 | AI Model | OpenAI GPT-4o-mini | Fast, cheap, accurate JSON extraction at low latency |
@@ -140,8 +142,8 @@ Kairos is built to never show a broken state during a live demo:
 ## Run Locally
 
 ```bash
-git clone https://github.com/MuhammadSubhan404x/Kairos.git
-cd Kairos
+git clone https://github.com/tachiiB/Kirothon-The-FINALE-AWS-Comm-PK.git
+cd Kirothon-The-FINALE-AWS-Comm-PK
 npm install
 
 # Required
@@ -172,10 +174,24 @@ Open [http://localhost:3000](http://localhost:3000) · Click **Load Samples** ·
 
 ---
 
+## Development
+
+This project was built using **Kiro AI Development Environment**, which accelerated development through:
+
+- **Intelligent Code Generation** — Rapid prototyping of complex TypeScript algorithms
+- **Context-Aware Suggestions** — Smart completions for Next.js App Router patterns
+- **Automated Refactoring** — Type-safe code improvements across multiple files
+- **Real-time Error Detection** — Immediate feedback on TypeScript issues
+- **AI-Assisted Debugging** — Quick identification and resolution of edge cases
+
+For a detailed development journey, see [DEVLOG.md](./DEVLOG.md).
+
+---
+
 ## Privacy
 
 Emails are processed transiently by OpenAI's API for analysis. Nothing is stored on our servers. All results are saved only in your browser's localStorage.
 
 ---
 
-Built by [Muhammad Subhan](https://github.com/MuhammadSubhan404x) · UET Lahore
+Built with [Kiro AI Development Environment](https://kiro.ai) by [Taha Jamshed](https://github.com/tachiiB) · UET Lahore
